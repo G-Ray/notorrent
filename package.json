@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/G-Ray/notorrent/issues"
   },
-  "homepage": "https://github.com/G-Ray/notorrent#readme"
+  "homepage": "https://github.com/G-Ray/notorrent#readme",
+  "dependencies": {
+    "electron": "^1.7.10"
+  }
 }
