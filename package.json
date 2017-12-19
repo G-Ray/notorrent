@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/G-Ray/notorrent#readme",
   "dependencies": {
-    "electron": "^1.7.10"
+    "electron": "^1.7.10",
+    "webtorrent": "^0.98.20"
   }
 }
