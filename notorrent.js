@@ -25,12 +25,13 @@ class NoTorrent {
   addTorrent (magnet) {
     client.add(magnet, { store: mem }, (torrent) => {
       console.log('addTorrent')
+      // torrent.files.forEach(f => f.deselect())
       this._torrents.push(torrent)
       let server = new Server(torrent)
       server.listen()
       let address = server.address()
       this._showNotification(torrent)
-      shell.openExternal('http://localhost:' + address.port + '/0')
+      shell.openExternal('http://localhost:' + address.port + '/' + torrent.files.length)
     })
   }
 }
