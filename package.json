@@ -19,6 +19,7 @@
   "homepage": "https://github.com/G-Ray/notorrent#readme",
   "dependencies": {
     "electron": "^1.7.10",
+    "memory-chunk-store": "^1.3.0",
     "webtorrent": "^0.98.20"
   }
 }
