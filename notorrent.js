@@ -1,4 +1,4 @@
-const { shell } = require('electron')
+const { shell, Notification } = require('electron')
 const WebTorrent = require('webtorrent')
 
 const Server = require('./lib/server')
@@ -11,6 +11,16 @@ class NoTorrent {
     this._torrents = []
   }
 
+  _showNotification (torrent) {
+    let notif = new Notification({
+      title: 'NoTorrent',
+      body: torrent.name + ' is downloading'
+    })
+
+    notif.on('show', () => console.log('show'))
+    notif.show()
+  }
+
   addTorrent (magnet) {
     client.add(magnet, (torrent) => {
       console.log('addTorrent')
@@ -18,7 +28,8 @@ class NoTorrent {
       let server = new Server(torrent)
       server.listen()
       let address = server.address()
-      shell.openExternal('http://localhost:' + address.port + '/0')
+      this._showNotification(torrent)
+      // shell.openExternal('http://localhost:' + address.port + '/0')
     })
   }
 }
