@@ -18,7 +18,7 @@ class NoTorrent {
       let server = new Server(torrent)
       server.listen()
       let address = server.address()
-      shell.openExternal('http://localhost:' + address.port)
+      shell.openExternal('http://localhost:' + address.port + '/0')
     })
   }
 }
