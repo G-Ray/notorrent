@@ -31,7 +31,9 @@ class NoTorrent {
       server.listen()
       let address = server.address()
       this._showNotification(torrent)
-      shell.openExternal('http://localhost:' + address.port + '/' + torrent.files.length)
+      let length = torrent.files.length
+      let index = length > 1 ? length : 0
+      shell.openExternal('http://localhost:' + address.port + '/' + index)
     })
   }
 }
