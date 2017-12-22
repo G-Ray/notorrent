@@ -1,20 +1,16 @@
-const {app, shell } = require('electron')
-const WebTorrent = require('webtorrent')
+const { app, shell } = require('electron')
 
-const Server = require('./lib/server')
+const NoTorrent = require('./notorrent')
 
-const client = new WebTorrent()
+const noTorrent = new NoTorrent()
 
 const isSecondInstance = app.makeSingleInstance((argv, workingDirectory) => {
   console.log(argv)
+  noTorrent.addTorrent(argv[2])
 })
 
 if (isSecondInstance) {
   app.quit()
 }
 
-client.add(process.argv[2], (torrent) => {
-  let server = new Server(torrent)
-  server.listen(8080)
-  shell.openExternal('http://localhost:8080')
-})
+noTorrent.addTorrent(process.argv[2])
