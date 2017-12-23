@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
+    "standard": "standard",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +23,8 @@
     "electron": "^1.7.10",
     "memory-chunk-store": "^1.3.0",
     "webtorrent": "^0.98.20"
+  },
+  "devDependencies": {
+    "standard": "^10.0.3"
   }
 }

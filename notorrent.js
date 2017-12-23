@@ -7,7 +7,6 @@ const Server = require('./lib/server')
 const client = new WebTorrent()
 
 class NoTorrent {
-  
   constructor () {
     this._torrents = []
   }

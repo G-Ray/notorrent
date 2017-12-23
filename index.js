@@ -1,4 +1,4 @@
-const { app, shell } = require('electron')
+const { app } = require('electron')
 
 const NoTorrent = require('./notorrent')
 
