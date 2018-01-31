@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=NoTorrent
+Version=1.0
+GenericName=BitTorrent Client
+X-GNOME-FullName=NoTorrent
+Comment=Download files over BitTorrent
+Encoding=UTF-8
+Type=Application
+Icon=webtorrent-desktop
+Terminal=false
+Exec=notorrent %U
+StartupNotify=false
+Categories=Network;FileTransfer;P2P;
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;x-scheme-handler/stream-magnet;

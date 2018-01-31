@@ -1,12 +1,14 @@
 {
   "name": "notorrent",
   "version": "0.0.0",
-  "description": "",
+  "description": "notorrent",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
     "standard": "standard",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "electron-packager . notorrent --out=dist/",
+    "rpm": "node package/linux/package.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,8 @@
     "webtorrent": "^0.98.20"
   },
   "devDependencies": {
+    "electron-installer-redhat": "^0.5.0",
+    "electron-packager": "^10.1.1",
     "standard": "^10.0.3"
   }
 }
