@@ -1,0 +1,22 @@
+notifications:
+  email: false
+
+os:
+  - linux
+  - osx
+
+language: node_js
+node_js:
+  - "8"
+  - "7"
+  - "6"
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run standard
