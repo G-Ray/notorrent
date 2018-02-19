@@ -3,20 +3,37 @@ notifications:
 
 os:
   - linux
-  - osx
 
 language: node_js
 node_js:
-  - "8"
-  - "7"
-  - "6"
+  - '8'
+  - '7'
+  - '6'
 
 cache:
   directories:
-    - node_modules
+  - node_modules
 
 install:
   - npm install
 
 script:
   - npm run standard
+
+before_deploy:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y rpm
+  - npm run package
+  - npm run rpm
+
+deploy:
+  provider: releases
+  api_key:
+    secure: oBEi2AP6W9nCofHvGky5m1JGpHP3T765UIItWoXLZz9tnCqbYjWUVD4cCPTCEHwHG7SqwpmKZ1rwXWctIJZPFzk69OSzACq7ZZcWypj3OFyNcaSiV99c1YPdfpOUXM/ZRas1/T3hi43oNMbdp2HnbHrSWq2dO/8ni38Jn7EXgDaby71OeWzmRkGjyQJsFdsbhno0mdrw8MBLTjd1v7/dCxWGXT4oN/Vtnh/PgrnMmGWyPgYpHgz5f/h4xbS8LDlUJmDJCPROohmQBCL2elojziXT+m2JwGrx4/89b3CIzwBkxRgYm44MobWbIkkNrwIF/eDppKkM3Et5O03itvC3JNwac8VWrXoNtVIjb8x0s1l7X0imyAQCVJvNFBRgy0CaJ278Hhln6Olr6YOYpiiIUFmL2aKfjyrb8daGpe2bkmWQb09phQ07k/IqwM0G1+ZkOIC+1DOUbM+dwnZ+0is4CUNcq/q81Z+DggYc0QQ9YHwAkyPqHrduJgpCuhFMQ9Wt6/cl7fCz8MekZX7IQ6ZxtQNI3EkihcNgK/ya7ob8fVb9E3MMkTdkJrBWlH9aTYPlgm/1zA6VxCZya+RLzZe+zZmSz57Knwr+/rmAQXOZSjhX5Ed/HZZ7jXHI7/764QFaUVI2fU2CHyOWh/iapI/LdRIic+SWXY6XLPuC1YijvBk=
+  file_glob: true
+  file: "./dist/installers/*"
+  skip_cleanup: true
+  on:
+    repo: G-Ray/notorrent
+    node: '8'
+    tags: true
